@@ -1,0 +1,1 @@
+- [ ] Once we get understanding of chrome extension API, abstract the operations in a facade to make it interoperable with firefox.
