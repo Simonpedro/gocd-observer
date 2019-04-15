@@ -6,15 +6,24 @@
         "Allow observe and automate GoCD related tasks.",
     "version": "1.0.0",
 
-    "browser_action": {
+    "page_action": {
         "default_icon": "icon16.png",
         "default_popup": "popup.html"
     },
+
+    "options_page": "options.html",
 
     "background": {
         "scripts": ["js/eventPage.js"],
         "persistent": false
     },
+
+    "content_scripts": [
+        {
+          "matches": ["http://ci.jemstep.com:8153/*"],
+          "js": ["js/contentScript.js"]
+        }
+      ],
 
     "icons": {
         "16": "icon16.png",
@@ -22,5 +31,6 @@
         "128": "icon128.png"
     },
 
-    "permissions": []
+    "permissions": ["storage", "declarativeContent", "activeTab"]
 }
+        

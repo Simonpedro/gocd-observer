@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es6",
         "module": "commonjs",
         "moduleResolution": "node",
         "rootDir": "src",
@@ -9,6 +9,16 @@
         "jsx": "react",
         "lib": ["es2015", "dom"],
         "experimentalDecorators": true,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "plugins": [
+            {
+              "name": "typescript-tslint-plugin",
+              "alwaysShowRuleFailuresAsWarnings": false,
+              "ignoreDefinitionFiles": true,
+              "configFile": "../tslint.json",
+              "suppressWhileTypeErrorsPresent": false,
+              "mockTypeScriptVersion": false
+            }
+          ]
     }
 }
