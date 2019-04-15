@@ -1,4 +1,4 @@
-import { GoCDEvent, GoCDEventType } from "./events";
+import  { GoCDEvent, GoCDEventType, stageBarChanges$ } from "./events";
 import configService from "./services/ConfigService";
 import slackService from "./services/SlackService";
 
@@ -22,22 +22,15 @@ chrome.runtime.onInstalled.addListener(function() {
 
 });
 
-const eventHandler = (event: GoCDEvent) => {
-    switch(event.type) {
-        case GoCDEventType.StageBarChanged:
-            const data = event.data;
-            slackService.chatPostMessage({
-                text: `${data.name} -> ${data.state}`
-            })
-            break;
-    }
-}
+// Reacting to events
+stageBarChanges$.subscribe(event => {
+    const stageBar = event.data;
+    slackService.chatPostMessage({
+        text: `${stageBar.name} -> ${stageBar.state}`
+    })
+})
 
-chrome.runtime.onMessage.addListener((event) => {
-    console.log('Event: ', event)
-    eventHandler(event)    
-});
-
+// Just for testing
 window["global"] = {
     configService,
     slackService

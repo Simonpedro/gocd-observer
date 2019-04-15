@@ -1,4 +1,6 @@
 import { StageBar } from "./types";
+import { Observable } from "rxjs";
+import { filter } from "rxjs/operators";
 
 export enum GoCDEventType {
     StageBarChanged = "StageBarChanged"
@@ -25,3 +27,13 @@ export const triggerStageBarChanged = (stageBar: StageBar) => {
         data: stageBar
     })
 }
+
+export const events$ = new Observable<GoCDEvent>(subscriber => {
+    
+    chrome.runtime.onMessage.addListener((event) => {
+        subscriber.next(event)
+    });
+
+})
+
+export const stageBarChanges$ = events$.pipe(filter(e => e.type === GoCDEventType.StageBarChanged))
