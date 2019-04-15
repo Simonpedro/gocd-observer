@@ -24,20 +24,30 @@ const View = ({options, onOptionsChange, message, loading}: ViewProps) => {
     return (
 
         <Root>
-            <Box border="all" pad="medium">
-                <Heading level="3">GoCD Observer</Heading>
+            <MainContainer border="all" pad="medium">
+                <Heading level="3" color="brand">GoCD Observer</Heading>
                 <Form onSubmit={onFormSubmit} value={options}>
                     <FormField name="slackApiKey" label="Slack API Key" />
                     <FormField name="slackChannel" label="Slack channel" />
-                    <Button type="submit" primary label="Save" disabled={loading}/>
+                    <Box justify="between" align="center" direction="row-reverse" wrap={false}>
+                        <Box direction="row" alignSelf="start">
+                            <Button type="submit" primary label="Save" disabled={loading}/>
+                        </Box>
+                        {message ? <Text color="brand" size="small">{message}</Text> : null}
+                    </Box>
+                    
                 </Form>
-                {message ? <Text>{message}</Text> : null}
-            </Box>
+                
+            </MainContainer>
         </Root>
     )
 }
 export default View;
 
+
+const MainContainer = styled(Box)`
+    box-shadow: 1px 1px 12px 1px rgba(219,219,219,1);
+`
 
 const Root = styled.div`
     position: fixed;
