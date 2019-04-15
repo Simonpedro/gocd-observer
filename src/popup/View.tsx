@@ -1,9 +1,8 @@
 import * as React from 'react';
-import './Popup.scss';
 
 const View = () => (
-    <div className="popupContainer">
-        Hello, world!
+    <div>
+        In this popup maybe we could show a the list of events. Something related to a particular page.
     </div>
 )
 export default View;
