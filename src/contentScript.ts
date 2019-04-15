@@ -24,8 +24,8 @@ const stageBars$ = new Observable<StageBar[]>(subscriber => {
 });
 
 
-stageBars$.subscribe((stageBar) => {
-    console.log('GoCD polling: ', stageBar)
+stageBars$.subscribe((stageBars) => {
+    console.log('GoCD polling: ', stageBars)
 })
 
 const stageBar$: Observable<StageBar> = stageBars$.pipe(concatMap(x => x))
