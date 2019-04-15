@@ -1,3 +1,6 @@
+/**
+ * Reducer and initial state for the ui of the options page
+ */
 import { Reducer } from "react";
 
 export const initialState = {

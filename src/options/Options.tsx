@@ -6,13 +6,16 @@ import configService from '../services/ConfigService';
 
 
 const Options = () => {
-
+    // UI state
     const [uiState, dispatch] = React.useReducer(uiReducer, uiInitialState);
+    
+    // State of the options. 
     const [options, setOptions] = React.useState<ExtensionOptions>({
         slackApiKey: "",
         slackChannel: ""
     })
 
+    // This runs on the first render only, initializing the options coming from the ConfigService
     React.useEffect(() => {
         configService.getExtensionOptions()
             .then(setOptions)

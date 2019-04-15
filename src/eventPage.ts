@@ -2,9 +2,9 @@ import  { GoCDEvent, GoCDEventType, stageBarChanges$ } from "./events";
 import configService from "./services/ConfigService";
 import slackService from "./services/SlackService";
 
+// This piece of code enables the popup on goCD valid pages
 chrome.runtime.onInstalled.addListener(function() {
     const goCDBaseUrl = configService.getGoCDServerName();
-
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
         chrome.declarativeContent.onPageChanged.addRules([
             {
@@ -22,7 +22,7 @@ chrome.runtime.onInstalled.addListener(function() {
 
 });
 
-// Reacting to events
+// Reacting to stage bar chages
 stageBarChanges$.subscribe(event => {
     const stageBar = event.data;
     slackService.chatPostMessage({
