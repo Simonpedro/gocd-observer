@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { groupBy, concatMap, map, distinctUntilChanged, startWith, skip } from 'rxjs/operators';
+import { groupBy, mergeAll, map, distinctUntilChanged, skip } from 'rxjs/operators';
 import getStateBarsFromContainer from './lib/getStateBarsFromContainer';
 import { StageBar } from './types';
 import { triggerStageBarChanged } from './events';
@@ -28,7 +28,7 @@ stageBars$.subscribe((stageBars) => {
     console.log('GoCD polling: ', stageBars)
 })
 
-const stageBar$: Observable<StageBar> = stageBars$.pipe(concatMap(x => x))
+const stageBar$: Observable<StageBar> = stageBars$.pipe(mergeAll())
 
 const stateBarsByName$ = stageBar$.pipe(
     // Group by stage name
