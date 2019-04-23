@@ -1,13 +1,16 @@
 import { StageBar } from "../types";
 
+function removeParentheses(value: string) {
+    return value.replace(/[()]/g, '');
+}
+
 function getStateBarsFromContainer(container): StageBar[] {
     const nodes = [...container
                    .querySelectorAll('.stage_bar')
                    .values()];
     return nodes.map(stageBarNode => {
-        const titleParts = stageBarNode.title.split(" ");
-        const stageName = titleParts[0];
-        const stageState = titleParts[1];
+        const [stageName, rawStageState] = stageBarNode.title.split(" ");
+        const stageState = removeParentheses(rawStageState);
         return {
             name: stageName,
             state: stageState
