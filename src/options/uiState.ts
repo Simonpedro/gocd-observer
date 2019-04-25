@@ -1,54 +1,57 @@
 /**
  * Reducer and initial state for the ui of the options page
  */
-import { Reducer } from "react";
+import { Reducer } from 'react'
 
 export const initialState = {
     loading: false,
-    message: ""
+    message: '',
 }
 
-const reducer: Reducer<State, ActionsTypes> = (state: State = initialState, action: ActionsTypes): State => {
-    switch(action.type) {
+const reducer: Reducer<IState, ActionsTypes> = (
+    state: IState = initialState,
+    action: ActionsTypes
+): IState => {
+    switch (action.type) {
         case Actions.SET_MESSAGE:
-            return {...state, message: action.payload}
+            return { ...state, message: action.payload }
         case Actions.TOGGLE_LOADING:
-            return {...state, loading: action.payload}
+            return { ...state, loading: action.payload }
         default:
-            return state;
+            return state
     }
-};
+}
 
-export default reducer;
+export default reducer
 
-export const toggleLoading = (loading?: boolean): ToggleLoadingAction => ({
+export const toggleLoading = (loading?: boolean): IToggleLoadingAction => ({
     type: Actions.TOGGLE_LOADING,
-    payload: loading
+    payload: loading,
 })
 
-export const setMessage = (message?: string): SetMessageAction => ({
+export const setMessage = (message?: string): ISetMessageAction => ({
     type: Actions.SET_MESSAGE,
-    payload: message
+    payload: message,
 })
 
 enum Actions {
-    TOGGLE_LOADING = "TOGGLE_LOADING",
-    SET_MESSAGE = "SET_MESSAGE"
+    TOGGLE_LOADING = 'TOGGLE_LOADING',
+    SET_MESSAGE = 'SET_MESSAGE',
 }
 
-interface State {
+interface IState {
     loading: boolean
     message: string
 }
 
-interface ToggleLoadingAction {
+interface IToggleLoadingAction {
     type: typeof Actions.TOGGLE_LOADING
     payload: boolean
 }
 
-interface SetMessageAction {
+interface ISetMessageAction {
     type: typeof Actions.SET_MESSAGE
     payload: string
 }
 
-type ActionsTypes = ToggleLoadingAction | SetMessageAction
+type ActionsTypes = IToggleLoadingAction | ISetMessageAction

@@ -15,12 +15,17 @@
 2.  Go to [_chrome://extensions_](chrome://extensions) in Google Chrome
 3.  With the developer mode checkbox ticked, click **Load unpacked extension...** and select the _dist_ folder from this repo
 
+## IDE
+
+The extension for tslint and prettier are required
+
 ## Architecture
 
 This extension has four main components:
-- `eventPage.ts`: The background script. Initializes extension configuration and reacts to events maybe sending messages through slack.
-- `contentScript.ts`: The content script that inspect the dom and triggers events on changes.
-- `popup`: Activated on go cd urls.
-- `options`: Shows options page
+
+-   `eventPage.ts`: The background script. Initializes extension configuration and reacts to events maybe sending messages through slack.
+-   `contentScript.ts`: The content script that inspect the dom and triggers events on changes.
+-   `popup`: Activated on go cd urls.
+-   `options`: Shows options page
 
 The communication between te different components is through events and abstracted using reactive streams.

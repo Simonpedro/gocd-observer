@@ -1,27 +1,30 @@
-import { ExtensionOptions } from "../types";
+import { defaults } from 'lodash'
+import { IExtensionOptions, IStageBarState } from '../types'
+import StorageService from './StorageService'
 
 class ConfigService {
+    private defaults: IExtensionOptions = {
+        slackApiKey: '',
+        slackChannel: '',
+    }
 
-    getGoCDServerName(): string {
+    public getGoCDServerName(): string {
         return 'ci.jemstep.com'
     }
 
-    setExtensionOptions(options: ExtensionOptions): Promise<ExtensionOptions> {
-        return new Promise(resolve => {
-            chrome.storage.sync.set(options, () => {
-                resolve(options)
-            });
-        });
-    }
-
-    getExtensionOptions(): Promise<ExtensionOptions> {
-        return new Promise(resolve => {
-            chrome.storage.sync.get(resolve)
+    public setExtensionOptions(options: IExtensionOptions): Promise<void> {
+        return StorageService.set({
+            extensionOptions: options,
         })
     }
 
+    public getExtensionOptions(): Promise<IExtensionOptions> {
+        return StorageService.get('extensionOptions').then(items => {
+            return defaults(items.extensionOptions, this.defaults)
+        })
+    }
 }
 
-const configService = new ConfigService();
+const configService = new ConfigService()
 
-export default configService;
+export default configService

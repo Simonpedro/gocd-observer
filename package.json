@@ -1,40 +1,48 @@
 {
-  "name": "chrome-extension-react-typescript-boilerplate",
-  "version": "1.0.0",
-  "description": "A boilerplate project to quickly build a Chrome extension using TypeScript and React (built using webpack).",
-  "scripts": {
-    "build": "webpack --config webpack.prod.js",
-    "dev": "webpack --config webpack.dev.js",
-    "watch": "webpack -w --config webpack.dev.js",
-    "lint": "tslint 'src/**/*.{ts, tsx}'"
-  },
-  "author": "Joe Martella",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/chrome": "^0.0.82",
-    "@types/react": "^16.8.13",
-    "@types/react-dom": "^16.8.3",
-    "@types/styled-components": "^4.1.14",
-    "babel-plugin-styled-components": "^1.10.0",
-    "css-loader": "^0.28.11",
-    "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.7",
-    "style-loader": "^0.20.3",
-    "ts-loader": "^4.0.1",
-    "tslint-config-airbnb": "^5.11.1",
-    "tslint-react": "^3.6.0",
-    "typescript": "^2.7.2",
-    "webpack": "^4.1.1",
-    "webpack-cli": "^3.1.1",
-    "webpack-merge": "^4.1.4"
-  },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "grommet": "^2.6.5",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "rebass": "^3.1.0",
-    "rxjs": "^6.4.0",
-    "styled-components": "^4.2.0"
-  }
+    "name": "chrome-extension-react-typescript-boilerplate",
+    "version": "1.1.1",
+    "description": "A boilerplate project to quickly build a Chrome extension using TypeScript and React (built using webpack).",
+    "scripts": {
+        "build": "webpack --config webpack.prod.js",
+        "dev": "webpack --config webpack.dev.js",
+        "watch": "webpack -w --config webpack.dev.js",
+        "lint": "tslint 'src/**/*.{ts, tsx}'"
+    },
+    "author": "Joe Martella",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/chrome": "^0.0.82",
+        "@types/lodash": "^4.14.123",
+        "@types/react": "^16.8.13",
+        "@types/react-dom": "^16.8.3",
+        "@types/styled-components": "^4.1.14",
+        "babel-plugin-styled-components": "^1.10.0",
+        "css-loader": "^0.28.11",
+        "node-sass": "^4.7.2",
+        "prettier": "1.17.0",
+        "sass-loader": "^6.0.7",
+        "style-loader": "^0.20.3",
+        "ts-loader": "^4.0.1",
+        "tslint": "^5.16.0",
+        "tslint-config-airbnb": "^5.11.1",
+        "tslint-react": "^3.6.0",
+        "typescript": "^2.7.2",
+        "utility-types": "^3.5.0",
+        "webpack": "^4.1.1",
+        "webpack-cli": "^3.1.1",
+        "webpack-merge": "^4.1.4"
+    },
+    "dependencies": {
+        "@material-ui/core": "^3.9.3",
+        "@material-ui/icons": "^3.0.2",
+        "axios": "^0.18.0",
+        "classnames": "^2.2.6",
+        "lodash": "^4.17.11",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "rebass": "^3.1.0",
+        "rxjs": "^6.4.0",
+        "styled-components": "^4.2.0",
+        "tslint-config-prettier": "^1.18.0"
+    }
 }

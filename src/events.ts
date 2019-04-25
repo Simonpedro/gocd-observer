@@ -2,18 +2,18 @@
  * Encapsulates chrome event system using reactive streams (observables) and functions.
  * This module exports functions to trigger events and observales to be consumed.
  */
-import { StageBar } from "./types";
-import { Observable } from "rxjs";
-import { filter } from "rxjs/operators";
+import { Observable } from 'rxjs'
+import { filter } from 'rxjs/operators'
+import { IStageBarState } from './types'
 
 export enum GoCDEventType {
-    StageBarChanged = "StageBarChanged"
+    StageBarChanged = 'StageBarChanged',
 }
 
 /**
  * Triggers an event using the chrome runtime
- * 
- * @param event 
+ *
+ * @param event
  */
 const triggerEvent = (event: GoCDEvent) => {
     chrome.runtime.sendMessage(undefined, event)
@@ -21,34 +21,34 @@ const triggerEvent = (event: GoCDEvent) => {
 
 /**
  * Trigger a StageBarChanged event
- * 
- * @param stageBar 
+ *
+ * @param stageBar
  */
-export const triggerStageBarChanged = (stageBar: StageBar) => {
+export const triggerStageBarChanged = (stageBar: IStageBarState) => {
     triggerEvent({
         type: GoCDEventType.StageBarChanged,
-        data: stageBar
+        data: stageBar,
     })
 }
 
-// Observable that represents all events. Listen to all event using the chrome runtime. 
+// Observable that represents all events. Listen to all event using the chrome runtime.
 export const events$ = new Observable<GoCDEvent>(subscriber => {
-    
-    chrome.runtime.onMessage.addListener((event) => {
+    chrome.runtime.onMessage.addListener(event => {
         subscriber.next(event)
-    });
-
+    })
 })
 
 // Observable that represents changes in the stage bars.
-export const stageBarChanges$ = events$.pipe(filter(event => event.type === GoCDEventType.StageBarChanged))
+export const stageBarChanges$ = events$.pipe(
+    filter(event => event.type === GoCDEventType.StageBarChanged)
+)
 
 // Types definitions for this module
-interface GoCDEventInterface<T> {
+interface IGoCDEvent<T> {
     type: GoCDEventType
     data: T
 }
-export interface StageBarChanged extends GoCDEventInterface<StageBar> {
+export interface IStageBarChanged extends IGoCDEvent<IStageBarState> {
     type: typeof GoCDEventType.StageBarChanged
 }
-export type GoCDEvent = StageBarChanged
+export type GoCDEvent = IStageBarChanged

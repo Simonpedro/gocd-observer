@@ -1,12 +1,18 @@
 /**
  * Here'll be declared global types definitions
  */
-export interface StageBar {
-    name: string,
+export interface IStageBarState {
+    name: string
     state: string
 }
 
-export interface ExtensionOptions {
+export interface IExtensionOptions {
+    /**
+     * Slack api
+     */
     slackApiKey: string
+    /**
+     * Slack channel id. I could the user slack ID too.
+     */
     slackChannel: string
 }
