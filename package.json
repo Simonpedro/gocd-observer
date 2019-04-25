@@ -4,6 +4,7 @@
     "description": "A boilerplate project to quickly build a Chrome extension using TypeScript and React (built using webpack).",
     "scripts": {
         "build": "webpack --config webpack.prod.js",
+        "postbuild": "zip -r ./dist/js/gocd-observer.zip ./dist/js",
         "dev": "webpack --config webpack.dev.js",
         "watch": "webpack -w --config webpack.dev.js",
         "lint": "tslint 'src/**/*.{ts, tsx}'"
