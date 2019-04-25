@@ -6,12 +6,13 @@ import {
     mergeAll,
     skip,
 } from 'rxjs/operators'
-import { triggerStageBarChanged } from './events'
-import getStateBarsFromContainer from './lib/getStateBarsFromContainer'
-import { IStageBarState } from './types'
+import { triggerStageBarChanged } from '../events'
+import getGoCDContentWrapper from '../lib/getGoCDContentWrapper'
+import getStateBarsFromContainer from '../lib/getStateBarsFromContainer'
+import { IStageBarState } from '../types'
 
 const stageBars$ = new Observable<IStageBarState[]>(subscriber => {
-    const nodeContentWrapper = document.querySelector('.content_wrapper_inner')
+    const nodeContentWrapper = getGoCDContentWrapper()
     const initialStageBars = getStateBarsFromContainer(nodeContentWrapper)
 
     const mutationObserver = new MutationObserver(() => {

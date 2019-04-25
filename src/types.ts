@@ -6,6 +6,11 @@ export interface IStageBarState {
     state: string
 }
 
+export interface IJob {
+    name: string
+    state: string
+}
+
 export interface IExtensionOptions {
     /**
      * Slack api

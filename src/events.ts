@@ -4,10 +4,11 @@
  */
 import { Observable } from 'rxjs'
 import { filter } from 'rxjs/operators'
-import { IStageBarState } from './types'
+import { IJob, IStageBarState } from './types'
 
 export enum GoCDEventType {
     StageBarChanged = 'StageBarChanged',
+    JobChanged = 'JobChanged',
 }
 
 /**
@@ -31,6 +32,13 @@ export const triggerStageBarChanged = (stageBar: IStageBarState) => {
     })
 }
 
+export const triggerJobChanged = (job: IJob) => {
+    triggerEvent({
+        type: GoCDEventType.JobChanged,
+        data: job,
+    })
+}
+
 // Observable that represents all events. Listen to all event using the chrome runtime.
 export const events$ = new Observable<GoCDEvent>(subscriber => {
     chrome.runtime.onMessage.addListener(event => {
@@ -41,14 +49,23 @@ export const events$ = new Observable<GoCDEvent>(subscriber => {
 // Observable that represents changes in the stage bars.
 export const stageBarChanges$ = events$.pipe(
     filter(event => event.type === GoCDEventType.StageBarChanged)
-)
+) as Observable<IStageBarChanged>
+
+// Observable that represents changes in the running jobs.
+export const jobChanges$ = events$.pipe(
+    filter(event => event.type === GoCDEventType.JobChanged)
+) as Observable<IJobChanged>
 
 // Types definitions for this module
 interface IGoCDEvent<T> {
-    type: GoCDEventType
     data: T
 }
 export interface IStageBarChanged extends IGoCDEvent<IStageBarState> {
-    type: typeof GoCDEventType.StageBarChanged
+    type: GoCDEventType.StageBarChanged
 }
-export type GoCDEvent = IStageBarChanged
+
+export interface IJobChanged extends IGoCDEvent<IJob> {
+    type: GoCDEventType.JobChanged
+}
+
+export type GoCDEvent = IStageBarChanged | IJobChanged

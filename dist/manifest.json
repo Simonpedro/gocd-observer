@@ -3,7 +3,7 @@
 
     "name": "GoCD Observer",
     "description": "Allows observing and automating GoCD related tasks.",
-    "version": "1.1.1",
+    "version": "1.2.1",
 
     "page_action": {
         "default_icon": "icon16.png",
@@ -20,7 +20,11 @@
     "content_scripts": [
         {
             "matches": ["http://ci.jemstep.com:8153/*"],
-            "js": ["js/contentScript.js"]
+            "js": ["js/stageBarsObserver.js"]
+        },
+        {
+            "matches": ["http://ci.jemstep.com:8153/*"],
+            "js": ["js/jobsObserver.js"]
         }
     ],
 

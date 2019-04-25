@@ -1,4 +1,9 @@
-import { GoCDEvent, GoCDEventType, stageBarChanges$ } from './events'
+import {
+    GoCDEvent,
+    GoCDEventType,
+    jobChanges$,
+    stageBarChanges$,
+} from './events'
 import configService from './services/ConfigService'
 import slackService from './services/SlackService'
 
@@ -19,11 +24,19 @@ chrome.runtime.onInstalled.addListener(() => {
     })
 })
 
-// Reacting to stage bar chages
+// Reacting to stage bar changes
 stageBarChanges$.subscribe(event => {
     const stageBar = event.data
     slackService.chatPostMessage({
-        text: `${stageBar.name} -> ${stageBar.state}`,
+        text: `Stage change: ${stageBar.name} -> ${stageBar.state}`,
+    })
+})
+
+// Reacting to job changes
+jobChanges$.subscribe(event => {
+    const job = event.data
+    slackService.chatPostMessage({
+        text: `Job change: ${job.name} -> ${job.state}`,
     })
 })
 
