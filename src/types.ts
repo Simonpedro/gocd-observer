@@ -11,13 +11,5 @@ export interface IJob {
     state: string
 }
 
-export interface IExtensionOptions {
-    /**
-     * Slack api
-     */
-    slackApiKey: string
-    /**
-     * Slack channel id. I could the user slack ID too.
-     */
-    slackChannel: string
-}
+// tslint:disable-next-line: no-empty-interface
+export interface IExtensionOptions {}

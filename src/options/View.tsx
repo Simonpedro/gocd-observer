@@ -59,30 +59,9 @@ const View = ({ options, onOptionsChange, message, loading }: IViewProps) => {
                                         alignItems="flex-start"
                                     >
                                         <Typography component="h6" variant="h6">
-                                            Slack
+                                            Some global extension config will go
+                                            here
                                         </Typography>
-                                        <Divider variant="fullWidth" />
-                                        <TextField
-                                            label="Slack API key"
-                                            value={options.slackApiKey}
-                                            onChange={handleChange(
-                                                'slackApiKey'
-                                            )}
-                                            margin="normal"
-                                            variant="outlined"
-                                            fullWidth={true}
-                                        />
-
-                                        <TextField
-                                            label="Slack channel"
-                                            value={options.slackChannel}
-                                            onChange={handleChange(
-                                                'slackChannel'
-                                            )}
-                                            margin="normal"
-                                            variant="outlined"
-                                            fullWidth={true}
-                                        />
                                     </Grid>
                                 </Form>
                             </CardContent>

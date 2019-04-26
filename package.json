@@ -1,10 +1,10 @@
 {
     "name": "chrome-extension-react-typescript-boilerplate",
-    "version": "1.2.1",
+    "version": "1.3.1",
     "description": "A boilerplate project to quickly build a Chrome extension using TypeScript and React (built using webpack).",
     "scripts": {
         "build": "webpack --config webpack.prod.js",
-        "postbuild": "zip -r ./dist/js/gocd-observer.zip ./dist/js",
+        "zip": "zip -r gocd-observer.zip ./dist/",
         "dev": "webpack --config webpack.dev.js",
         "watch": "webpack -w --config webpack.dev.js",
         "lint": "tslint 'src/**/*.{ts, tsx}'"
@@ -13,6 +13,7 @@
     "license": "MIT",
     "devDependencies": {
         "@types/chrome": "^0.0.82",
+        "@types/firefox": "^0.0.29",
         "@types/lodash": "^4.14.123",
         "@types/react": "^16.8.13",
         "@types/react-dom": "^16.8.3",
@@ -29,6 +30,7 @@
         "tslint-react": "^3.6.0",
         "typescript": "^2.7.2",
         "utility-types": "^3.5.0",
+        "web-ext-types": "kelseasy/web-ext-types",
         "webpack": "^4.1.1",
         "webpack-cli": "^3.1.1",
         "webpack-merge": "^4.1.4"

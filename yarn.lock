@@ -163,6 +163,11 @@
   resolved "https://repo.jemstep.com/artifactory/api/npm/npm/@types/filewriter/-/filewriter-0.0.28.tgz?dl=https://registry.yarnpkg.com/@types/filewriter/-/filewriter-0.0.28.tgz#c054e8af4d9dd75db4e63abc76f885168714d4b3"
   integrity sha1-wFTor02d11205jq8dviFFocU1LM=
 
+"@types/firefox@^0.0.29":
+  version "0.0.29"
+  resolved "https://repo.jemstep.com/artifactory/api/npm/npm/@types/firefox/-/firefox-0.0.29.tgz?dl=https://registry.yarnpkg.com/@types/firefox/-/firefox-0.0.29.tgz#799b7c935f8ae924b2b25a206c55044e90a768f4"
+  integrity sha1-eZt8k1+K6SSyslogbFUETpCnaPQ=
+
 "@types/jss@^9.5.6":
   version "9.5.8"
   resolved "https://repo.jemstep.com/artifactory/api/npm/npm/@types/jss/-/jss-9.5.8.tgz?dl=https://registry.yarnpkg.com/@types/jss/-/jss-9.5.8.tgz#258391f42211c042fc965508d505cbdc579baa5b"
@@ -5135,6 +5140,10 @@ watchpack@^1.5.0:
     chokidar "^2.0.2"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
+
+web-ext-types@kelseasy/web-ext-types:
+  version "3.1.0"
+  resolved "https://codeload.github.com/kelseasy/web-ext-types/tar.gz/652155e78128484fc50110b7f6f4f907eeb16193"
 
 webpack-cli@^3.1.1:
   version "3.3.0"

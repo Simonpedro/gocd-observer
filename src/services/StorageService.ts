@@ -1,9 +1,9 @@
-import { IExtensionOptions } from '../types'
+import browser from '../lib/browser'
 
 class StorageService {
     public set(items: object): Promise<void> {
         return new Promise(resolve => {
-            chrome.storage.sync.set(items, resolve)
+            browser.storage.sync.set(items, resolve)
         })
     }
 
@@ -11,7 +11,7 @@ class StorageService {
         keys?: string | string[] | object | null
     ): Promise<{ [key: string]: any }> {
         return new Promise(resolve => {
-            chrome.storage.sync.get(resolve)
+            browser.storage.sync.get(resolve)
         })
     }
 }

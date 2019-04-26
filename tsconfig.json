@@ -12,13 +12,13 @@
         "allowSyntheticDefaultImports": true,
         "plugins": [
             {
-              "name": "typescript-tslint-plugin",
-              "alwaysShowRuleFailuresAsWarnings": false,
-              "ignoreDefinitionFiles": true,
-              "configFile": "../tslint.json",
-              "suppressWhileTypeErrorsPresent": false,
-              "mockTypeScriptVersion": false
+                "name": "typescript-tslint-plugin",
+                "alwaysShowRuleFailuresAsWarnings": false,
+                "ignoreDefinitionFiles": true,
+                "configFile": "../tslint.json",
+                "suppressWhileTypeErrorsPresent": false,
+                "mockTypeScriptVersion": false
             }
-          ]
+        ]
     }
 }

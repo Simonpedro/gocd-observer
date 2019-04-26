@@ -1,9 +1,10 @@
 /**
- * Encapsulates chrome event system using reactive streams (observables) and functions.
+ * Encapsulates browser event system using reactive streams (observables) and functions.
  * This module exports functions to trigger events and observales to be consumed.
  */
 import { Observable } from 'rxjs'
 import { filter } from 'rxjs/operators'
+import browser from './lib/browser'
 import { IJob, IStageBarState } from './types'
 
 export enum GoCDEventType {
@@ -12,12 +13,12 @@ export enum GoCDEventType {
 }
 
 /**
- * Triggers an event using the chrome runtime
+ * Triggers an event using the browser runtime
  *
  * @param event
  */
 const triggerEvent = (event: GoCDEvent) => {
-    chrome.runtime.sendMessage(undefined, event)
+    browser.runtime.sendMessage(undefined, event)
 }
 
 /**
@@ -41,7 +42,7 @@ export const triggerJobChanged = (job: IJob) => {
 
 // Observable that represents all events. Listen to all event using the chrome runtime.
 export const events$ = new Observable<GoCDEvent>(subscriber => {
-    chrome.runtime.onMessage.addListener(event => {
+    browser.runtime.onMessage.addListener(event => {
         subscriber.next(event)
     })
 })

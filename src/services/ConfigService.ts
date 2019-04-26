@@ -3,10 +3,7 @@ import { IExtensionOptions, IStageBarState } from '../types'
 import StorageService from './StorageService'
 
 class ConfigService {
-    private defaults: IExtensionOptions = {
-        slackApiKey: '',
-        slackChannel: '',
-    }
+    private defaults: IExtensionOptions = {}
 
     public getGoCDServerName(): string {
         return 'ci.jemstep.com'
