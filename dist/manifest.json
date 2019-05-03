@@ -19,11 +19,11 @@
 
     "content_scripts": [
         {
-            "matches": ["http://ci.jemstep.com:8153/*"],
+            "matches": ["http://ci.jemstep.com:8153/go/pipelines/*"],
             "js": ["js/stageBarsObserver.js"]
         },
         {
-            "matches": ["http://ci.jemstep.com:8153/*"],
+            "matches": ["http://ci.jemstep.com:8153/go/pipelines/*"],
             "js": ["js/jobsObserver.js"]
         }
     ],
