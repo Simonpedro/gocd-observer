@@ -1,6 +1,6 @@
 {
     "name": "go-cd-observer",
-    "version": "1.3.3",
+    "version": "1.3.4",
     "description": "A boilerplate project to quickly build a Chrome extension using TypeScript and React (built using webpack).",
     "scripts": {
         "build": "webpack --config webpack.prod.js",
