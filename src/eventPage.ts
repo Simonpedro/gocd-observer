@@ -17,23 +17,6 @@ const createNotification = ({
     })
 }
 
-// This piece of code enables the popup on goCD valid pages
-browser.runtime.onInstalled.addListener(() => {
-    const goCDBaseUrl = configService.getGoCDServerName()
-    browser.declarativeContent.onPageChanged.removeRules(undefined, () => {
-        browser.declarativeContent.onPageChanged.addRules([
-            {
-                conditions: [
-                    new browser.declarativeContent.PageStateMatcher({
-                        pageUrl: { hostEquals: goCDBaseUrl },
-                    }),
-                ],
-                actions: [new browser.declarativeContent.ShowPageAction()],
-            },
-        ])
-    })
-})
-
 // Reacting to stage bar changes
 stageBarChanges$.subscribe(event => {
     const stageBar = event.data
